@@ -12,11 +12,9 @@ In this simple example it does a bit of both.
 
 import * as React from 'react';
 import View from '../View';
-import SwitchViewDropdown from '../SwitchViewDropdown';
 import Hello from '../Hello';
 import { declareQueries } from 'avenger/lib/react';
 import { currentView } from '../../queries';
-import { constNull } from 'fp-ts/lib/function';
 
 import './app.scss';
 
@@ -26,16 +24,8 @@ class App extends React.Component<typeof queries.Props> {
   render() {
     return (
       <View column className="app">
-        <h1>Bento App</h1>
-        <SwitchViewDropdown />
-        {this.props.queries.fold(constNull, constNull, ({ currentView }) => {
-          switch (currentView) {
-            case 'hello':
-              return <Hello />;
-            case 'home':
-              return null;
-          }
-        })}
+        <h1>Yelp Searcher</h1>
+        <Hello />
       </View>
     );
   }

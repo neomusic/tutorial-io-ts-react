@@ -21,8 +21,6 @@ const { IntlProvider } = require('../util/intl');
 const { loadLocale } = require('./loadLocale');
 
 // @ts-ignore
-require('./addDeviceClassName');
-// @ts-ignore
 require('../theme');
 
 export function main(mountNode: HTMLElement) {
