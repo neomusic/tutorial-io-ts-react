@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "scriptoni web-dev -c ./config",
-    "build": "NODE_ENV=production scriptoni web-build -c ./config"
+    "build": "NODE_ENV=production scriptoni web-build -c ./config",
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "avenger": "^5.0.0",
@@ -19,9 +20,12 @@
   "devDependencies": {
     "@types/classnames": "^2.2.9",
     "@types/fixed-data-table": "^0.6.35",
+    "@types/jest": "^24.0.23",
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
     "@types/react-intl": "^2.3.18",
-    "scriptoni": "^8.0.0"
+    "jest": "^24.9.0",
+    "scriptoni": "^8.0.0",
+    "ts-jest": "^24.2.0"
   }
 }
