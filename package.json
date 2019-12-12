@@ -15,7 +15,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-flexview": "^4.0.3",
-    "react-intl": "^2.9.0"
+    "react-intl": "^2.9.0",
+    "typescript": "^3.2.4"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",

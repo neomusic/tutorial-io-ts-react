@@ -4,5 +4,5 @@
     "lib": ["es2018", "dom"],
     "baseUrl": "."
   },
-  "include": ["./src/**/*", "typings"]
+  "include": ["./src/**/*", "typings/**/*"]
 }

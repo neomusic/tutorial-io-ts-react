@@ -1,0 +1,6 @@
+{
+  "bundle": {
+    "apiEndpoint": "http://uinames.com",
+    "token": "1234"
+  }
+}
