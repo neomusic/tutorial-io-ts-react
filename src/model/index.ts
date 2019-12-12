@@ -42,3 +42,9 @@ export function viewToLocation(view: CurrentView): HistoryLocation {
       return { pathname: '/', search: {} };
   }
 }
+
+export type Restaurant = {
+  name: string;
+  image_url: string;
+  url: string;
+};
