@@ -16,12 +16,10 @@ import Hello from '../Hello';
 import { declareQueries } from 'avenger/lib/react';
 import { currentView } from '../../queries';
 import './app.scss';
-import * as config from './../../config';
 
 const queries = declareQueries({ currentView });
 class App extends React.Component<typeof queries.Props> {
   render() {
-    console.log(config);
     return (
       <View column className="app">
         <View className="title">Yelp Restaurant finder</View>

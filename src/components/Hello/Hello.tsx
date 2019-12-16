@@ -1,9 +1,9 @@
 import * as React from 'react';
-import View from '../View';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { declareQueries } from 'avenger/lib/react';
-import { randomName } from '../../queries';
-
+import { search } from '../../queries';
+import { InputField } from 'buildo-react-components';
+import FlexView from 'react-flexview';
 import './hello.scss';
 
 /*
@@ -19,13 +19,14 @@ value will thus be undefined.
 
 */
 
-const queries = declareQueries({ randomName });
+const queries = declareQueries({ search });
 
-const HelloName = queries((props: typeof queries.Props) =>
+const HelloName = queries(props =>
   props.queries.fold(
-    () => <View>...</View>,
-    () => <View>Something went wrong.</View>,
-    ({ randomName }) => <FormattedMessage id="Hello.hello" values={{ name: randomName }} />
+    () => <FlexView>...</FlexView>,
+    () => <FlexView>Something went wrong.</FlexView>,
+    //@ts-ignore
+    search => <p>ciao</p>
   )
 );
 
@@ -41,52 +42,49 @@ it could be available indefinitely.
 */
 
 type State = {
-  value: string;
+  location: string;
+  radius: string;
   length: number;
   showError: boolean;
 };
 
 export default class Hello extends React.Component<{}, State> {
   state = {
-    value: '10',
+    location: '10',
+    radius: '100',
     length: 10,
     showError: false
   };
 
-  onLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const parsedValue = parseInt(value);
-
-    const betweenSixAndFifty = !isNaN(parsedValue) && parsedValue >= 6 && parsedValue <= 50;
-
-    if (!value) {
-      this.setState({ value: '' });
-    } else if (betweenSixAndFifty) {
-      this.setState({ value, length: parsedValue, showError: false });
-    } else {
-      this.setState({ value, showError: true });
-    }
+  onChange = (key: string, value: string) => {
+    //@ts-ignore
+    this.setState({ [key]: value });
   };
 
   render() {
+    console.log(this);
     const {
-      state: { length, value, showError },
-      onLengthChange
+      state: { location, radius }
     } = this;
 
     return (
-      <View column className="hello">
-        <View vAlignContent="center">
-          <View className="label">length:</View>
-          <input type="number" value={value} onChange={onLengthChange} />
-          {showError && (
-            <span className="warning">
-              <FormattedMessage id="Hello.warningLength" />
-            </span>
-          )}
-        </View>
-        <HelloName queries={{ randomName: length }} />
-      </View>
+      <FlexView column>
+        <FlexView vAlignContent="center">
+          <FlexView height={120} width={'100%'} hAlignContent="center" vAlignContent="center">
+            <InputField
+              label="Location"
+              value={location}
+              onChange={value => this.onChange('location', value)}
+            />
+            <InputField
+              label="Radius"
+              value={radius}
+              onChange={value => this.onChange('radius', value)}
+            />
+          </FlexView>
+        </FlexView>
+        <HelloName queries={{ search: { location, radius } }} />
+      </FlexView>
     );
   }
 }

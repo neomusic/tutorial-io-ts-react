@@ -12,25 +12,22 @@ export const search = (zone: {
   return tryCatch(
     () =>
       axios({
-        url: `${config.apiEndpoint}/v3/businesses/search`,
+        url: `${config.apiEndpoint}v3/businesses/search`,
         params: {
           category: 'restaurants',
           radius,
           location
         },
-        headers: { Authorization: `Bearer ${config.token}` }
+        headers: { Authorization: `Bearer ${config.token}`, 'Access-Control-Allow-Origin': '*' }
       }),
     identity
-  ).chain(({ data: { businesses } }) => {
-    return fromEither(
-      businesses.map(
-        (el: Restaurant) =>
-          <Restaurant>{
-            name: el.name,
-            image_url: el.image_url,
-            url: el.url
-          }
-      ) || ''
-    );
-  });
+  ).chain(({ data: { businesses } }) =>
+    fromEither<unknown, Restaurant[]>(
+      businesses.map((el: Restaurant) => ({
+        name: el.name,
+        image_url: el.image_url,
+        url: el.url
+      }))
+    )
+  );
 };

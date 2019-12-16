@@ -1,6 +1,6 @@
 {
   "bundle": {
-    "apiEndpoint": "http://uinames.com",
-    "token": "1234"
+    "apiEndpoint": "http://localhost:1337/api.yelp.com/",
+    "token": "rSi4TcKk6A2LkCz9npefhuOZsMU9_8PeS3m6Ed4glBvP0Uqr7Au7O9hOw4dOJv4k8VXrWAXYnuUo6trFZRwCxUqLY9ezVj6IO8vp1bLpVKl71cnkFDfnRsqy78_wXXYx"
   }
 }
