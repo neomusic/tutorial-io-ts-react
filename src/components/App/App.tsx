@@ -16,8 +16,7 @@ import Hello from '../Hello';
 import { declareQueries } from 'avenger/lib/react';
 import { currentView } from '../../queries';
 import './app.scss';
-//@ts-ignore
-import * as config from 'config';
+import * as config from './../../config';
 
 const queries = declareQueries({ currentView });
 class App extends React.Component<typeof queries.Props> {
