@@ -4,17 +4,17 @@ import { Restaurant } from 'src/model';
 import axios from 'axios';
 import * as config from './../config';
 
-export const search = (
-  category: string,
-  radius?: string,
-  location?: string
-): TaskEither<unknown, Restaurant[]> => {
+export const search = (zone: {
+  radius: string;
+  location: string;
+}): TaskEither<unknown, Restaurant[]> => {
+  const { radius, location } = zone;
   return tryCatch(
     () =>
-      axios.get('', {
+      axios({
         url: `${config.apiEndpoint}/v3/businesses/search`,
         params: {
-          category,
+          category: 'restaurants',
           radius,
           location
         },
