@@ -5,55 +5,32 @@ import { search } from '../../queries';
 import { InputField } from 'buildo-react-components';
 import FlexView from 'react-flexview';
 import './searchBar.scss';
-
-/*
-
-We define a simple `HelloName` component that, once wrapped
-in a query declaration for the `randomName` query, will receive its input params
-as props (`length: number`) and pass to the wrapped component the `randomName` value,
-result of fetching the declared query.
-
-Updating the `length` prop will cause the query to refetch with the
-updated params. Initially and in general while refetching, the `randomName`
-value will thus be undefined.
-
-*/
+import RingLoader from 'react-spinners/RingLoader';
+import ViewRestaurants from '../ViewRestaurants';
 
 const queries = declareQueries({ search });
 
 const HelloName = queries(props =>
   props.queries.fold(
-    () => <FlexView>...</FlexView>,
-    () => <FlexView>Something went wrong.</FlexView>,
-    //@ts-ignore
-    search => <p>ciao</p>
+    () => (
+      <FlexView hAlignContent="center" style={{ justifyContent: 'center' }}>
+        <RingLoader sizeUnit={'px'} size={150} />
+      </FlexView>
+    ),
+    () => <FlexView className="error">Qualcosa è andato storto</FlexView>,
+    ({ search }) => <ViewRestaurants restaurants={search} />
   )
 );
-
-/*
-
-The hello component instead holds some control state, handled with React state.
-This means it will be reinitialized to `10` every time the component
-is unmounted and re-mounted.
-On the contrary, the `randomName` data state obtained via the query, has a lifecycle
-that is unrelated to the react component one: dependeing on its `cacheStrategy`,
-it could be available indefinitely.
-
-*/
 
 type State = {
   location: string;
   radius: string;
-  length: number;
-  showError: boolean;
 };
 
 export default class Hello extends React.Component<{}, State> {
   state = {
-    location: '10',
-    radius: '100',
-    length: 10,
-    showError: false
+    location: 'Milan',
+    radius: '1000'
   };
 
   onChange = (key: string, value: string) => {
@@ -62,7 +39,6 @@ export default class Hello extends React.Component<{}, State> {
   };
 
   render() {
-    console.log(this);
     const {
       state: { location, radius }
     } = this;
