@@ -4,7 +4,7 @@ import { declareQueries } from 'avenger/lib/react';
 import { search } from '../../queries';
 import { InputField } from 'buildo-react-components';
 import FlexView from 'react-flexview';
-import './hello.scss';
+import './searchBar.scss';
 
 /*
 
