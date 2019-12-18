@@ -24,7 +24,7 @@ class App extends React.Component<typeof queries.Props> {
     console.log(config);
     return (
       <View column className="app">
-        <h1>Yelp Restaurant finder</h1>
+        <View className="title">Yelp Restaurant finder</View>
         <Hello />
       </View>
     );
