@@ -7,15 +7,19 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
+    "@types/qs": "^6.9.0",
     "avenger": "^5.0.0",
+    "axios": "^0.19.0",
     "buildo-normalize-css": "^3.0.2",
     "buildo-react-components": "^0.44.1",
     "classnames": "^2.2.6",
     "es6-promise": "^4.2.8",
+    "qs": "^6.9.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-flexview": "^4.0.3",
-    "react-intl": "^2.9.0"
+    "react-intl": "^2.9.0",
+    "typescript": "^3.2.4"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",

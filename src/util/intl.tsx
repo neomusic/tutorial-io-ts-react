@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { addLocaleData, IntlProvider as IntlIntlProvider } from 'react-intl';
 
 export type _IntlData = {

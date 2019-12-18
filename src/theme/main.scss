@@ -14,3 +14,9 @@
   outline: -webkit-focus-ring-color auto 5px;
   outline-color: $mediumBlue;
 }
+
+body {
+  background: #ffb347;
+  background: -webkit-linear-gradient(to top, #ffcc33, #ffb347);
+  background: linear-gradient(to top, #ffcc33, #ffb347);
+}
