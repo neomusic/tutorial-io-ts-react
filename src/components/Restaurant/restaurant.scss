@@ -1,0 +1,17 @@
+@import './../../../node_modules/@material/card/dist/mdc.card.css';
+@import './../../../node_modules/animate.css/animate.css';
+
+.restaurant {
+  margin: 20px;
+  .restaurantTitle {
+    width: 14vw;
+    margin: 10px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    p {
+      width: 100%;
+    }
+  }
+}

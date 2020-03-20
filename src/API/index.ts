@@ -1,4 +1,4 @@
-import { TaskEither, tryCatch, fromEither } from 'fp-ts/lib/TaskEither';
+import { TaskEither, tryCatch } from 'fp-ts/lib/TaskEither';
 import { identity } from 'fp-ts/lib/function';
 import { Restaurant } from 'src/model';
 import axios from 'axios';
@@ -18,19 +18,14 @@ export const search = (zone: {
           radius,
           location
         },
-        headers: { Authorization: `Bearer ${config.token}` }
+        headers: { Authorization: `Bearer ${config.token}`, 'Access-Control-Allow-Origin': '*' }
       }),
     identity
-  ).chain(({ data: { businesses } }) => {
-    return fromEither(
-      businesses.map(
-        (el: Restaurant) =>
-          <Restaurant>{
-            name: el.name,
-            image_url: el.image_url,
-            url: el.url
-          }
-      ) || ''
-    );
-  });
+  ).map(({ data: { businesses } }) =>
+    businesses.map((el: Restaurant) => ({
+      name: el.name,
+      image_url: el.image_url,
+      url: el.url
+    }))
+  );
 };

@@ -1,0 +1,32 @@
+@import '../../theme/variables.scss';
+
+.input {
+  width: 200px;
+
+  input {
+    -webkit-box-shadow: 10px 10px 36px -9px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 10px 10px 36px -9px rgba(0, 0, 0, 1);
+    box-shadow: 10px 10px 36px -9px rgba(0, 0, 0, 1);
+    border: none;
+    border-radius: 4px;
+    height: 28px;
+    font-size: 18px;
+  }
+}
+
+.spinnerLoading {
+  align-content: center;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.error {
+  font-family: 'Lobster', sans-serif;
+  justify-content: center;
+  font-size: 28px;
+  color: $strawberry;
+}
+
+.label {
+  color: $darkGrey;
+}
